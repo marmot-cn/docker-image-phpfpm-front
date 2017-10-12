@@ -27,7 +27,7 @@ RUN set -ex \
          '; \
     } | tee /usr/local/etc/php/conf.d/core.ini \
     && { \
-        echo 'session.save_hander = memcached'; \
+        echo 'session.save_handler = memcached'; \
         echo 'session.save_path = tcp://memcached-1:11211,tcp://memcached-2:11211'; \
     } | tee /usr/local/etc/php/conf.d/session.ini \
     && sed -i -e '/pm.max_children/s/5/100/' \
