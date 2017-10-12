@@ -19,12 +19,12 @@ RUN set -ex \
          echo 'log_errors = on'; \
          echo 'expose_php = off'; \
          echo 'disable_functions=chmod, \
-                                 chgrp,chown, \
-                                 chroot, \
-                                 passthru,exec,system,shell_exec,popen,proc_open, \
-                                 dl,ini_set,ini_alert,ini_restore, \
-                                 disk_total_space,disk_free_space,diskfreespace,phpinfo \
-         '; \                                                                                                                                                                              '; \
+                                chgrp,chown, \
+                                chroot, \
+                                passthru,exec,system,shell_exec,popen,proc_open, \
+                                dl,ini_set,ini_alert,ini_restore, \
+                                disk_total_space,disk_free_space,diskfreespace,phpinfo, \
+         '; \
     } | tee /usr/local/etc/php/conf.d/core.ini \
     && { \
         echo 'session.save_hander = memcached'; \
