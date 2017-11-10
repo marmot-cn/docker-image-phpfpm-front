@@ -12,7 +12,7 @@ RUN set -ex \
          echo "date.timezone = 'PRC'"; \
          echo "memory_limit = '256M'"; \
          echo 'upload_tmp_dir = /var/www/html/cache/tmp'; \
-         echo 'file_uploads = off'; \
+         echo 'file_uploads = on'; \
          echo 'display_errors = off'; \
          echo 'html_errors = off'; \
          echo 'error_reporting = E_ALL'; \
