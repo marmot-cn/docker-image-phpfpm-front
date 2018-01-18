@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/phpfpm/phpfpm-front-base:1.0
+FROM registry.cn-hangzhou.aliyuncs.com/phpfpm/phpfpm-front-base:1.1
 
 RUN set -ex \
     && { \
