@@ -29,7 +29,7 @@ RUN set -ex \
     && { \
         echo 'session.save_handler = memcached'; \
         echo 'session.cookie_httponly = 1'; \
-        echo 'session.save_path = memcached_session_1:11211,memcached_session_2:11211'; \
+        echo 'session.save_path = memcached-session-1:11211,memcached-session-2:11211'; \
     } | tee /usr/local/etc/php/conf.d/session.ini \
     && jsonlog='{"request_id":"%{REQUEST_ID}e","remote_ip":"%R","server_time":"%t","request_method":"%m","request_uri":"%r%Q%q","status":"%s","script_filename":"%f","server_request_millsecond":"%{mili}d","peak_memory_kb":"%{kilo}M","total_request_cpu":"%C%%"}' \
     && sed -i -e '/pm.max_children/s/5/100/' \
