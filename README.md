@@ -9,7 +9,7 @@
 * `post_max_size`设置`post`传输限制
 * `date.timezone`设定时区
 * `memory_limit`设定内存限制
-* `file_uploads = off`上传文件功能关闭
+* `file_uploads = on`开启上传文件功能
 * `upload_tmp_dir`虽然上传文件功能关闭, 还是把上传文件路径指向到别的位置
 * `display_errors = off`不输出错误
 * `error_reporting = E_ALL`错误级别,设定到`notice`

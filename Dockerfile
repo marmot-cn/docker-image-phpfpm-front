@@ -8,7 +8,7 @@ RUN set -ex \
         echo 'opcache.huge_code_pages=1'; \
     } | tee /usr/local/etc/php/conf.d/opcache.ini \
     && { \
-         echo 'post_max_size = 5M'; \
+         echo 'post_max_size = 10M'; \
          echo "date.timezone = 'PRC'"; \
          echo "memory_limit = '256M'"; \
          echo 'upload_tmp_dir = /var/www/html/cache/tmp'; \
