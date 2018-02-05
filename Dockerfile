@@ -9,6 +9,7 @@ RUN set -ex \
     } | tee /usr/local/etc/php/conf.d/opcache.ini \
     && { \
          echo 'post_max_size = 10M'; \
+         echo 'upload_max_filesize = 10M'; \
          echo "date.timezone = 'PRC'"; \
          echo "memory_limit = '256M'"; \
          echo 'upload_tmp_dir = /var/www/html/cache/tmp'; \
