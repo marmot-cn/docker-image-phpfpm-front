@@ -20,13 +20,43 @@
 	* `session.save_hander = memcached;`
 	* `session.save_path = tcp://memcached-1:11211,tcp://memcached-2:11211`
 
-##### `open_basedir`不使用
+#### `open_basedir`不使用
 
 open_basedir开启后会影响I/O，因为每个调用的文件都需要判断是否在限制目录内.
 
 使用open_basedir可以限制程序可操作的目录和文件,提高系统安全性.但会影响I/O性能导致系统执行变慢,因此需要根据具体需求,在安全与性能上做平衡.
 
-##### 添加禁用函数
+#### memcached相关参数修改
+
+在`ajax`请求过多页面会报如下错误, 
+
+```
+Warning: session_start(): Unable to clear session lock record in /var/www/html/Core.php on line 165
+
+Warning: session_start(): Failed to read session data: memcached (path: memcached-session-1:11211,memcached-session-2:11211) in /var/www/html/Core.php on line 165
+```
+
+参考[https://github.com/php-memcached-dev/php-memcached/issues/269](https://github.com/php-memcached-dev/php-memcached/issues/269)
+
+添加配置参数
+
+```
+ini_set('memcached.sess_lock_wait_min', 150);
+ini_set('memcached.sess_lock_wait_max', 150);
+ini_set('memcached.sess_lock_retries', ini_get('max_execution_time') * 1000 / 150);
+```
+
+我们的`ini_get('max_execution_time')`是默认配置为`30`秒, 所以最终配置文件修改为:
+
+200 = 30 * 1000 / 150;
+
+```
+ini_set('memcached.sess_lock_wait_min', 150);
+ini_set('memcached.sess_lock_wait_max', 150);
+ini_set('memcached.sess_lock_retries', 200);
+```
+
+#### 添加禁用函数
 
 [禁用函数列表](./disableFunctions.md)
 
