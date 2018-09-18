@@ -36,7 +36,7 @@ RUN set -ex \
         echo 'memcached.sess_lock_wait_max = 150'; \
         echo 'memcached.sess_lock_retries = 200'; \
     } | tee /usr/local/etc/php/conf.d/memcached.ini \
-    && jsonlog='{"request_id":"%{REQUEST_ID}e","remote_ip":"%R","server_time":"%t","request_method":"%m","request_uri":"%r%Q%q","status":"%s","script_filename":"%f","server_request_millsecond":"%{mili}d","peak_memory_kb":"%{kilo}M","total_request_cpu":"%C%%"}' \
+    && jsonlog='{"request_id":"%{REQUEST_ID}e","remote_ip":"%R","time":"%{%Y-%m-%dT%H:%M:%S%z}t","request_method":"%m","request_uri":"%r%Q%q","status":"%s","script_filename":"%f","server_request_millsecond":"%{mili}d","peak_memory_kb":"%{kilo}M","total_request_cpu":"%C%%"}' \
     && sed -i -e '/pm.max_children/s/5/100/' \
            -e '/pm.start_servers/s/2/40/' \
            -e '/pm.min_spare_servers/s/1/20/' \
