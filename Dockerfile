@@ -8,6 +8,7 @@ RUN pecl install xdebug-2.6.1 \
         echo 'opcache.enable=1'; \
         echo 'opcache.enable_cli=1'; \
         echo 'opcache.huge_code_pages=1'; \
+        echo 'opcache.validate_timestamps=0'; \
     } | tee /usr/local/etc/php/conf.d/opcache.ini \
     && { \
          echo 'post_max_size = 10M'; \
