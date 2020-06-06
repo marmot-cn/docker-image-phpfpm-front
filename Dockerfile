@@ -1,7 +1,9 @@
 FROM registry.cn-hangzhou.aliyuncs.com/phpfpm/phpfpm-front-base:1.3
 
-RUN pecl install xdebug-2.6.1 \
-    && docker-php-ext-enable xdebug \
+RUN apt-get update && apt-get install -y \
+    libmagickwand-dev --no-install-recommends \
+    && pecl install imagick \
+    && docker-php-ext-enable imagick
     && set -ex \
     && { \
         echo 'zend_extension=opcache.so'; \
