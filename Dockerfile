@@ -1,6 +1,6 @@
 FROM registry.cn-hangzhou.aliyuncs.com/phpfpm/phpfpm-front-base:1.3
 
-RUN apt-get update && apt-get install -y libmagickwand-dev wkhtmltopdf xvfb xauth mkfontscale mkfontdir --no-install-recommends \
+RUN apt-get update && apt-get install -y libmagickwand-dev wkhtmltopdf xvfb xauth ttf-mscorefonts-installer --no-install-recommends \
     && set -ex \
     && { \
         echo 'zend_extension=opcache.so'; \
