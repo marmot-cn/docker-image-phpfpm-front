@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y wget cabextract xfonts-utils xfonts-75d
          echo 'disable_functions=chmod, \
                chgrp,chown, \
                chroot, \
-               exec,system,popen, \
+               exec,system,popen, shell_exec,\
                dl, \
                disk_total_space,disk_free_space,diskfreespace,phpinfo'; \
     } | tee /usr/local/etc/php/conf.d/core.ini \
