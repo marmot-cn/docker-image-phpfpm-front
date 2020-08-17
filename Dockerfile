@@ -4,7 +4,7 @@ ADD ttf-mscorefonts-installer_3.7_all.deb /data/
 ADD wkhtmltox_0.12.5-1.jessie_amd64.deb /data/
 ADD MSYH.TTF /usr/share/fonts/myfonts/
 
-RUN apt-get update && apt-get install -y xvfb xauth wget cabextract xfonts-utils xfonts-75dpi xfonts-base fontconfig libxrender1 --no-install-recommends \
+RUN apt-get update && apt-get install -y wget cabextract xfonts-utils xfonts-75dpi xfonts-base fontconfig libxrender1 --no-install-recommends \
     && dpkg -i /data/wkhtmltox_0.12.5-1.jessie_amd64.deb \
     && dpkg -i /data/ttf-mscorefonts-installer_3.7_all.deb \
     && rm -rf /data \
