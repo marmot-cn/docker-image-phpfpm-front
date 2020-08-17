@@ -1,6 +1,8 @@
 FROM registry.cn-hangzhou.aliyuncs.com/phpfpm/phpfpm-front-base:1.3
 
-RUN apt-get update && apt-get install -y libmagickwand-dev wkhtmltopdf xvfb xauth ttf-mscorefonts-installer \
+RUN apt-get update && apt-get install -y libmagickwand-dev wkhtmltopdf xvfb xauth --no-install-recommends \
+    && wget http://ftp.us.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb \
+    && sudo dpkg -i ttf-mscorefonts-installer_3.6_all.deb \
     && set -ex \
     && { \
         echo 'zend_extension=opcache.so'; \
