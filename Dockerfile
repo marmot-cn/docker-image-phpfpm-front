@@ -1,9 +1,14 @@
 FROM registry.cn-hangzhou.aliyuncs.com/phpfpm/phpfpm-front-base:1.3
 
 ADD ttf-mscorefonts-installer_3.7_all.deb /data/
+ADD wkhtmltox_0.12.5-1.jessie_amd64.deb /data/
+ADD MSYH.TTF /usr/share/fonts/myfonts/
 
-RUN  apt-get update && apt-get install -y libmagickwand-dev wkhtmltopdf xvfb xauth wget cabextract xfonts-utils --no-install-recommends \
-    && dpkg -i /data/ttf-mscorefonts-installer_3.7_all.deb && rm -rf /data \
+RUN apt-get update && apt-get install -y xvfb xauth wget cabextract xfonts-utils xfonts-75dpi xfonts-base --no-install-recommends \
+    && dpkg -i /data/wkhtmltox_0.12.5-1.jessie_amd64.deb \
+    && dpkg -i /data/ttf-mscorefonts-installer_3.7_all.deb \
+    && rm -rf /data \
+    && mkfontscale && mkfontdir \
     && set -ex \
     && { \
         echo 'zend_extension=opcache.so'; \
@@ -25,7 +30,7 @@ RUN  apt-get update && apt-get install -y libmagickwand-dev wkhtmltopdf xvfb xau
          echo 'disable_functions=chmod, \
                chgrp,chown, \
                chroot, \
-               exec,system,shell_exec,popen, \
+               exec,system,popen, \
                dl, \
                disk_total_space,disk_free_space,diskfreespace,phpinfo'; \
     } | tee /usr/local/etc/php/conf.d/core.ini \
