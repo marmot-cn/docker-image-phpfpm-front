@@ -1,6 +1,9 @@
 FROM registry.cn-hangzhou.aliyuncs.com/phpfpm/phpfpm-front-base:1.3
 
-RUN apt-get update && apt-get install -y libmagickwand-dev wkhtmltopdf xvfb xauth --no-install-recommends \
+ADD ttf-mscorefonts-installer_3.7_all.deb /data/
+
+RUN cd /data && dpkg -i ttf-mscorefonts-installer_3.7_all.deb && rm -rf /data \
+    && apt-get update && apt-get install -y libmagickwand-dev wkhtmltopdf xvfb xauth --no-install-recommends \
     && wget http://ftp.us.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb \
     && sudo dpkg -i ttf-mscorefonts-installer_3.6_all.deb \
     && set -ex \
