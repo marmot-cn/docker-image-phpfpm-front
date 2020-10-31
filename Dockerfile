@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y wget cabextract xfonts-utils xfonts-75d
     && dpkg -i /data/ttf-mscorefonts-installer_3.7_all.deb \
     && rm -rf /data \
     && mkfontscale && mkfontdir \
+    && pecl install xdebug-2.9.8 \
+    && docker-php-ext-enable xdebug \
     && set -ex \
     && { \
         echo 'zend_extension=opcache.so'; \
