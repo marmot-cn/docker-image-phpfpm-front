@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/phpfpm/phpfpm-front-base:1.3
+FROM registry.cn-hangzhou.aliyuncs.com/phpfpm/phpfpm-front-base:1.4
 
 ADD ttf-mscorefonts-installer_3.7_all.deb /data/
 ADD wkhtmltox_0.12.5-1.jessie_amd64.deb /data/
