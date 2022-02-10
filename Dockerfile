@@ -1,6 +1,7 @@
 FROM registry.cn-hangzhou.aliyuncs.com/phpfpm/phpfpm-front-base:1.4
 
-RUN pecl install xdebug-2.9.8 \
+RUN apt-get update && apt-get install -y pdf2htmlEX --no-install-recommends && rm -r /var/lib/apt/lists/* \  
+    && pecl install xdebug-2.9.8 \
     && docker-php-ext-enable xdebug \ 
     && set -ex \
     && { \
@@ -31,7 +32,7 @@ RUN pecl install xdebug-2.9.8 \
          echo 'disable_functions=chmod, \
                chgrp,chown, \
                chroot, \
-               exec,system,shell_exec,popen, \
+               system,popen, \
                dl, \
                disk_total_space,disk_free_space,diskfreespace,phpinfo'; \
     } | tee /usr/local/etc/php/conf.d/core.ini \
